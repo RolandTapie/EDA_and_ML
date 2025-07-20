@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
+from statsmodels.graphics.gofplots import qqplot
 
 
 def training_machine_learning_models(model_type: str, modeles: dict, validation_croisee, X_train, X_test, y_train, y_test):
@@ -105,7 +106,7 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
             plt.xlabel('Predicted')
             plt.ylabel('True')
             plt.title('Confusion Matrix : '+ val[0])
-            img=save_path+"confusion_matrix_"+str(val[0]+".png")
+            img=save_path+"classification_confusion_matrix_"+str(val[0]+".png")
 
             #rapport=Report.add_image(rapport,img)
             plt.savefig(img)
@@ -128,7 +129,7 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
             plt.xlabel('False Positive Rate')
             plt.ylabel('True Positive Rate')
             plt.title('ROC Curve : ' + val[0])
-            img=save_path+"Roc_auc_"+ str(val[0])+".png"
+            img=save_path+"classification_Roc_auc_"+ str(val[0])+".png"
             plt.savefig(img)
             plt.show()
             roc_auc = auc(fpr, tpr)
@@ -145,6 +146,35 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
         pipeline_best_model=pipeline_model[best]
 
     else:
+
+        for prediction in predictions:
+            name=prediction[0]
+            predicted_values=prediction[1]
+            df_residuals = pd.DataFrame({"real": y_test , "predicted":predicted_values})
+            df_residuals['residuals']=df_residuals['real']-df_residuals['predicted']
+            plt.scatter(x=df_residuals['real'],y=df_residuals['predicted'])
+            plt.title('real-predicted scatter : ' + name)
+            img=save_path+"regression_real_predicted_scatter_"+ name+".png"
+            plt.savefig(img)
+            plt.show()
+
+            plt.scatter(x=df_residuals.index,y=df_residuals['residuals'], c="red")
+            plt.title('residuals scatter : ' + name)
+            img=save_path+"regression_residuals_scatter_"+ name+".png"
+            plt.savefig(img)
+            plt.show()
+
+            sns.histplot(df_residuals['residuals'], kde=True, bins=30)
+            plt.title('normality check of residuals : ' + name)
+            img=save_path+"regression_residuals_normality_hist_"+ name+".png"
+            plt.savefig(img)
+            plt.show()
+
+            qqplot(df_residuals['residuals'], line='s')
+            plt.title('normality check of residuals : ' + name)
+            img=save_path+"regression_residuals_normality_qqplot_"+ name+".png"
+            plt.savefig(img)
+            plt.show()
         scor=mse[0][1]
         best=mse[0][0]
         tab_modele=[["Modele","RMSE"]]
