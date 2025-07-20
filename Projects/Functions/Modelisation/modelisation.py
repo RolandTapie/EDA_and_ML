@@ -104,7 +104,7 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
             plt.xlabel('Predicted')
             plt.ylabel('True')
             plt.title('Confusion Matrix : '+ val[0])
-            img=save_path+"confusion_matrix"+str(val[0]+".png")
+            img=save_path+"confusion_matrix_"+str(val[0]+".png")
 
             #rapport=Report.add_image(rapport,img)
             plt.savefig(img)
@@ -127,7 +127,7 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
             plt.xlabel('False Positive Rate')
             plt.ylabel('True Positive Rate')
             plt.title('ROC Curve : ' + val[0])
-            img=save_path+"Roc_auc"+ str(val[0])+".png"
+            img=save_path+"Roc_auc_"+ str(val[0])+".png"
             plt.savefig(img)
             plt.show()
             roc_auc = auc(fpr, tpr)

@@ -1,17 +1,17 @@
-from Data_cleaning.Data_cleaning import List_of_category_columns
-from Data_cleaning.Data_cleaning import List_of_float_and_int_columns
+
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, FunctionTransformer, OneHotEncoder
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline,make_pipeline
+from Projects.Functions.Data_cleaning.Data_cleaning import *
 import joblib
-from Utils import utils
+from Projects.Functions.Read_config.read_config import *
 from datetime import datetime
 
 def build_the_final_pipeline(pipeline_best_model,features, targets, cible,pca=False, pca_number_of_composantes=5):
 
-    liste_cat=List_of_category_columns(features)
-    liste_float_int=List_of_float_and_int_columns(features)
+    liste_cat=dataset_categorical_values(features)
+    liste_float_int=dataset_numerical_values(features)
 
     liste_cat = [val for val in liste_cat if val != cible]
     liste_float_int = [val for val in liste_float_int if val != cible]
@@ -41,14 +41,14 @@ def build_the_final_pipeline(pipeline_best_model,features, targets, cible,pca=Fa
     return pipeline
 
 def update_config(config_path,config_api,model_file,path_model):
-    utils.update_config(config_path,"model_file",model_file)
-    utils.update_config(config_api,"model_file",model_file)
-    utils.update_config(config_path,"api_model_path",path_model)
-    utils.update_config(config_api,"api_model_path","./"+path_model)
-    utils.update_config(config_path,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    utils.update_config(config_api,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    update_config(config_path,"model_file",model_file)
+    update_config(config_api,"model_file",model_file)
+    update_config(config_path,"api_model_path",path_model)
+    update_config(config_api,"api_model_path","./"+path_model)
+    update_config(config_path,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    update_config(config_api,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-def saving_of_best_model_for_production(config_path,config_api,model_path,model_path_api, pipeline,best):
+def saving_of_best_model_for_production(model_path,model_path_api, pipeline,best):
     model_file = best + "_pipeline_model.joblib"
     path_model = "Models/" + model_file
 
@@ -57,4 +57,4 @@ def saving_of_best_model_for_production(config_path,config_api,model_path,model_
     print(model_path + model_file)
     print(model_path_api + model_file)
 
-    update_config(config_path,config_api,model_file,path_model)
+    #update_config(config_path,config_api,model_file,path_model)

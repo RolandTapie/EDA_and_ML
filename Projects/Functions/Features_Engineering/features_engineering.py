@@ -1,5 +1,5 @@
 import pandas as pd
-from Data_cleaning.Data_cleaning import List_of_category_columns
+from Projects.Functions.Data_cleaning.Data_cleaning import *
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 import json
@@ -11,7 +11,8 @@ import numpy as np
 
 def encoding_categorical_features(dataframe: pd.DataFrame,target:str):
     features=dataframe.drop(target, axis=1)
-    liste_cat = List_of_category_columns(dataframe)
+    liste_cat = dataset_categorical_values(dataframe)
+    print(liste_cat)
     df_cat=features[liste_cat]
     encoder = OneHotEncoder(sparse_output=False)
     encoded_data = encoder.fit_transform(df_cat)
@@ -70,7 +71,7 @@ def split_dataset(features: pd.DataFrame, targets : pd.DataFrame, fraction:float
         y_train=targets
         y_test=targets
     else:
-        X_train, X_test, y_train, y_test = train_test_split(features, targets, test_size=fraction, random_state=seed)
+        X_train, X_test, y_train, y_test = train_test_split(features, targets, test_size=fraction, random_state=seed, stratify=targets)
 
     return X_train, X_test, y_train, y_test
 
@@ -113,3 +114,7 @@ def PCA_dimension_reduction(features:pd.DataFrame,X_train:pd.DataFrame,X_test:pd
     X_test=model_PCA.transform(X_test)
 
     return X_train, X_test, features_train_pca,features_test_pca,n_composantes
+
+#df = pd.read_csv(r"C:\Users\tallar\Documents\PROJETS\EDA_and_ML\Projects\Project_EDA\Repositories\Data\car_insurance.csv")
+#one_hot = encoding_categorical_features(df,"outcome")
+#print(df.dtypes)

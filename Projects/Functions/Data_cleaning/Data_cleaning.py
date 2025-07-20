@@ -60,9 +60,16 @@ def dataset_duplicates(dataframe: pd.DataFrame):
 def dataset_remove_duplicates(dataframe: pd.DataFrame):
     return dataframe.drop_duplicates()
 
+def dataset_object_to_categorical(dataframe: pd.DataFrame):
+    for col in dataframe.columns:
+        if dataframe[col].dtype == "object":
+            dataframe[col]=dataframe[col].astype("category")
+
+    return dataframe
+
 def dataset_categorical_values(dataframe: pd.DataFrame):
     df=dataframe
-    return [col for col in df.columns if df[col].dtype=="category"]
+    return [col for col in df.columns if ((df[col].dtype=="category")|(df[col].dtype=="object"))]
 
 def dataset_numerical_values(dataframe: pd.DataFrame):
     df=dataframe

@@ -53,6 +53,6 @@ class Report():
         if not image_path=="vide":
             self.doc_add_image(image_path)
 
-    def report_builder(self):
+    def report_builder(self, path):
         # Sauvegarder le fichier
-        self.document.save(f"{self.report_name}.docx")
+        self.document.save(f"{path}{self.report_name}.docx")

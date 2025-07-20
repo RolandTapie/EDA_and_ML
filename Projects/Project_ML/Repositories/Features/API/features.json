@@ -1,0 +1,19 @@
+{
+    "id": "int64  : values = [ 101 to 999976 ]",
+    "age": "int64  : values = [ 0 to 3 ]",
+    "gender": "int64  : values = [ 0 to 1 ]",
+    "driving_experience": "category  : values = ['0-9y', '10-19y', '20-29y', '30y+']",
+    "education": "category  : values = ['high school', 'none', 'university']",
+    "income": "category  : values = ['upper class', 'poverty', 'working class', 'middle class']",
+    "credit_score": "float64  : values = [ 0.0533575454627435 to 0.9608188278116948 ]",
+    "vehicle_ownership": "float64  : values = [ 0.0 to 1.0 ]",
+    "vehicle_year": "category  : values = ['after 2015', 'before 2015']",
+    "married": "float64  : values = [ 0.0 to 1.0 ]",
+    "children": "float64  : values = [ 0.0 to 1.0 ]",
+    "postal_code": "int64  : values = [ 10238 to 92101 ]",
+    "annual_mileage": "float64  : values = [ 2000.0 to 22000.0 ]",
+    "vehicle_type": "category  : values = ['sedan', 'sports car']",
+    "speeding_violations": "int64  : values = [ 0 to 22 ]",
+    "duis": "int64  : values = [ 0 to 6 ]",
+    "past_accidents": "int64  : values = [ 0 to 15 ]"
+}

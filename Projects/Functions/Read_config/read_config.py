@@ -32,3 +32,12 @@ def get_config(config_path: str):
         test_kaggle=config["project_folder"] + config["kaggle_test_path"]
 
     return cible,validation_croisee, pca, dim_pca,var_pca,alpha,fraction,seed,corr_limit,fold,del_cols,file_path,dataset,model_path,model_path_api,features_json,report_file,figure_path,model_type
+
+def update_config(config_path, cle, valeur):
+    with open(config_path, "r") as f:
+        data = json.load(f)
+
+    data[cle] = valeur
+
+    with open(config_path, "w") as f:
+        json.dump(data, f, indent=4)

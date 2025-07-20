@@ -1,0 +1,8 @@
+Data_cleaning
+EDA
+Features_Engineering
+Modelisation
+Models_generation
+Pipeline_Modelisation
+Read_dataset
+Utils
