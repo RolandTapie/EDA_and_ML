@@ -71,7 +71,7 @@ def split_dataset(features: pd.DataFrame, targets : pd.DataFrame, fraction:float
         y_train=targets
         y_test=targets
     else:
-        X_train, X_test, y_train, y_test = train_test_split(features, targets, test_size=fraction, random_state=seed, stratify=targets)
+        X_train, X_test, y_train, y_test = train_test_split(features, targets, test_size=fraction, random_state=seed)
 
     return X_train, X_test, y_train, y_test
 

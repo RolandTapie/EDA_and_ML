@@ -3,6 +3,7 @@ from sklearn.metrics import mean_squared_error, r2_score,roc_curve, auc
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import pandas as pd
 
 
 def training_machine_learning_models(model_type: str, modeles: dict, validation_croisee, X_train, X_test, y_train, y_test):
@@ -156,3 +157,19 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
         pipeline_best_model=pipeline_model[best]
 
     return best_modele, pipeline_best_model, best
+
+def generate_results(list_results, model_type):
+    results = pd.DataFrame(list_results[1:], columns=list_results[0])
+    if model_type == "classification":
+        results["Precision"]=results["Precision"].astype("float64")
+        results["Accuracy"]=results["Accuracy"].astype("float64")
+        results["F1-Score"]=results["F1-Score"].astype("float64")
+        results["Recall"]=results["Recall"].astype("float64")
+        results = results.sort_values(by = "Precision", ascending=False)
+    elif model_type == "regression":
+        "MSE","RMSE","R2"
+        results["MSE"]=results["MSE"].astype("float64")
+        results["RMSE"]=results["RMSE"].astype("float64")
+        results["R2"]=results["R2"].astype("float64")
+        results = results.sort_values(by = "R2", ascending=False)
+    return results

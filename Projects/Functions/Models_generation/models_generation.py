@@ -123,3 +123,4 @@ def check_model_coherences(dataframe : pd.DataFrame, target : str, model_type: s
         raise Exception ("Vérifier le type de modèle")
     else:
         print("Check Model OK")
+

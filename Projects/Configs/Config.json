@@ -1,9 +1,9 @@
 {
     "project_name": "Nom du projet",
     "project_folder": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/",
-    "data_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Data/car_insurance.csv",
-    "target": "outcome",
-    "model_type": "classification",
+    "data_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Data/Houses.csv",
+    "target": "SalePrice",
+    "model_type": "regression",
     "boosting": true,
     "reports_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/Reports/",
     "model_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/Models/",

@@ -8,6 +8,7 @@ import joblib
 from Projects.Functions.Read_config.read_config import *
 from datetime import datetime
 
+
 def build_the_final_pipeline(pipeline_best_model,features, targets, cible,pca=False, pca_number_of_composantes=5):
 
     liste_cat=dataset_categorical_values(features)
@@ -48,9 +49,8 @@ def update_config(config_path,config_api,model_file,path_model):
     update_config(config_path,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     update_config(config_api,"time_stamp_model",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-def saving_of_best_model_for_production(model_path,model_path_api, pipeline,best):
-    model_file = best + "_pipeline_model.joblib"
-    path_model = "Models/" + model_file
+def saving_of_best_model_for_production(model_path,model_path_api, pipeline,best,project_name):
+    model_file = project_name+"_"+ best + "_pipeline_model.joblib"
 
     joblib.dump(pipeline, model_path + model_file)
     joblib.dump(pipeline, model_path_api + model_file)
