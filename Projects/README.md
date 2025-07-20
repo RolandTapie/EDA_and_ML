@@ -1,93 +1,115 @@
-📌 1. Compréhension générale du dataset
-Dimensions du dataset (nombre de lignes et de colonnes)
 
-Aperçu des premières lignes (head(), tail())
+# 📊 Projet d’Analyse de Données & Modélisation Machine Learning
 
-Types de données (dtypes)
+Bienvenue dans ce projet complet de **traitement de données**, **analyse exploratoire**, **ingénierie de features**, et **modélisation machine learning**, structuré pour garantir modularité, scalabilité et reproductibilité.
 
-Description statistique (describe())
+---
 
-Vérification des doublons
+## 📁 Structure du Projet
 
-Lecture de la documentation / dictionnaire de données s’il existe
+```
+.
+├── README.md
+├── structure.txt
+├── Configs/                    # 🔧 Fichiers de configuration (.json)
+├── Data/                       # 📂 Jeux de données bruts
+├── Deployment/                # 🚀 Fichiers liés au déploiement
+├── Functions/                 # 🧠 Fonctions modulaires
+│   ├── build/                 # 🔨 Build interne
+│   ├── Config_Loader/         # 🛠️ Chargeur de configuration
+│   ├── Context/               # 🧾 Contexte du projet
+│   ├── Data_cleaning/         # 🧹 Nettoyage des données
+│   ├── EDA/                   # 📊 Analyse exploratoire
+│   ├── Features_Engineering/  # 🏗️ Ingénierie des features
+│   ├── Modelisation/          # 🤖 Modélisation machine learning
+│   ├── Models_generation/     # 🏭 Génération automatique de modèles
+│   ├── Pipeline_Modelisation/ # 🔁 Pipeline de modélisation
+│   ├── Read_dataset/          # 📥 Chargement des datasets
+│   ├── Report/                # 📝 Génération de rapports (DOCX / PDF)
+│   └── Utils/                 # 🧰 Fonctions utilitaires
+├── Orchestration/             # 📡 Orchestration (Airflow, scripts automatisés, etc.)
+├── Project_EDA/               # 🔬 Projet EDA spécifique (Exploration & visualisation)
+├── Project_ML/                # 🤖 Projet de Machine Learning
+```
 
-📌 2. Qualité des données
-🔍 Valeurs manquantes
-Nombre et pourcentage de valeurs manquantes par colonne
+---
 
-Répartition des valeurs manquantes (ex : heatmap)
+## 📚 Contenu Principal
 
-🔁 Doublons
-Détection des lignes dupliquées
+### 🔧 `Configs/`
+Contient des fichiers `.json` utilisés pour paramétrer dynamiquement le comportement des modules.
 
-Suppression si pertinent
+### 📂 `Data/` & `Project_EDA/Repositories/Data/`
+Jeux de données utilisés pour l’analyse (ex. `cancer.csv`, `car_insurance.csv`, etc.).
 
-❌ Valeurs aberrantes (outliers)
-Détection via :
+### 📊 `Functions/EDA/`
+Scripts pour générer des analyses descriptives, graphiques, et statistiques de base.
 
-Boxplots
+### 🧹 `Functions/Data_cleaning/`
+Contient des fonctions pour la préparation des données (valeurs manquantes, doublons, etc.).
 
-Z-score ou IQR
+### 🏗️ `Functions/Features_Engineering/`
+Extraction et transformation de variables (normalisation, encodage, etc.).
 
-Méthodes robustes (Isolation Forest, etc.)
+### 🤖 `Functions/Modelisation/` & `Models_generation/`
+Création, entraînement et sauvegarde des modèles de machine learning.
 
-Traitement (suppression ou remplacement)
+### 🔁 `Functions/Pipeline_Modelisation/`
+Implémente des pipelines scikit-learn pour chaîner preprocessing et modèle.
 
-❓ Incohérences
-Incohérences logiques (ex : date de fin < date de début)
+### 📑 `Functions/Report/`
+Scripts de génération de rapports `.docx`, utiles pour automatiser la documentation des résultats.
 
-Incohérences de formats (ex : majuscules vs minuscules, types de chaînes)
+---
 
-Données hors domaine (ex : âges négatifs)
+## 🧪 Dossiers de Projets
 
-📌 3. Analyse des variables
-🔣 Variables qualitatives (catégorielles)
-Nombre de modalités
+### 🔬 `Project_EDA/`
+Contient les analyses exploratoires par domaine :
+- `Notebooks/`: notebooks Jupyter (`Explor_Data_Analysis.ipynb`)
+- `Reports/`: rapports générés
+- `Figures/`: graphiques (histogrammes, boxplots, matrices de corrélation, etc.)
 
-Fréquence des catégories (value_counts())
+### 🤖 `Project_ML/`
+Contient la partie modélisation complète :
+- `Models/`: modèles entraînés (ex. `xgboost_pipeline_model.joblib`)
+- `Figures/`: courbes ROC AUC, matrices de confusion
+- `Reports/`: rapports versionnés
+- `Notebooks/`: workflow complet machine learning (`machine_learning.ipynb`)
 
-Catégories rares ou déséquilibrées
+---
 
-Cohérence des libellés
+## 🛠️ Fonctionnalités Clés
 
-🔢 Variables quantitatives
-Statistiques descriptives : moyenne, médiane, min, max, écart-type
+- ✅ **Chargement dynamique** des datasets et configs
+- 📈 **Analyse exploratoire automatique**
+- 🧠 **Création de pipelines machine learning**
+- 🧹 **Prétraitement modulaire**
+- 📝 **Rapports automatisés** avec visualisations
+- 📦 **Packaging & modules réutilisables**
 
-Distribution (histogrammes, densité)
+---
 
-Symétrie (skewness)
+## 🚀 Déploiement
 
-Normalité (test de Shapiro-Wilk, QQ plot)
+Le dossier `Deployment/` est prévu pour accueillir des scripts de déploiement (API, Docker, CI/CD…).
 
-📌 4. Relations entre variables
-🧮 Corrélations
-Matrice de corrélation pour variables numériques
+---
 
-Heatmap
+## 🧪 Tests
 
-Corrélation de Spearman/Pearson/Kendall selon le cas
+Les sous-dossiers `Tests/` dans les deux projets (`Project_EDA`, `Project_ML`) permettent de mettre en œuvre des tests unitaires ou fonctionnels.
 
-📊 Visualisations croisées
-Catégorielle vs numérique : boxplot, violinplot
+---
 
-Numérique vs numérique : scatter plot, regression plot
+## 📄 À venir
 
-Catégorielle vs catégorielle : crosstab, barplot
+- [ ] Ajout d’une API pour la prédiction en ligne
+- [ ] Automatisation avec Airflow ou Prefect
+- [ ] Ajout de modèles deep learning
 
-📌 5. Analyse temporelle (si données temporelles)
-Format de date cohérent
+---
 
-Distribution des dates
+## 👨‍💻 Auteur
 
-Séries chronologiques : tendance, saisonnalité
-
-Valeurs manquantes ou irrégularités temporelles
-
-📌 6. Préparation pour la suite
-Codage des variables catégorielles (Label Encoding, One-hot)
-
-Création de variables dérivées utiles
-
-Transformation éventuelle (log, standardisation, normalisation)
-
-Séparation jeu d'entraînement / test si besoin
+> Projet développé avec ❤️ par une approche modulaire et professionnelle de la science des données.
