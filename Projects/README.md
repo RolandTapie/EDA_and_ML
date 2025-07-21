@@ -1,7 +1,8 @@
 
 # 📊 Projet d’Analyse de Données & Modélisation Machine Learning
-
+![ML_workflow.gif](Docs/ML_workflow.gif)
 Bienvenue dans ce projet complet de **traitement de données**, **analyse exploratoire**, **ingénierie de features**, et **modélisation machine learning**, structuré pour garantir modularité, scalabilité et reproductibilité.
+
 
 ---
 
