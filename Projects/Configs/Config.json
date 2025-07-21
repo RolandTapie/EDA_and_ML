@@ -28,8 +28,8 @@
         "Ticket",
         "Cabin"
     ],
-    "pca": false,
-    "dim_pca": 0,
+    "pca": true,
+    "dim_pca": 5,
     "var_pca": 0.95,
     "alpha": 0.05,
     "fraction_test": 0.2,

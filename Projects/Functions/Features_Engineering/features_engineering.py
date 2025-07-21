@@ -88,14 +88,14 @@ def TSNE_dimension_reduction(features: pd.DataFrame, y_train, save_path):
 
 
 
-def PCA_dimension_reduction(features:pd.DataFrame,X_train:pd.DataFrame,X_test:pd.DataFrame, var_pca:float,dim_pca):
+def PCA_dimension_reduction(X_train:pd.DataFrame,X_test:pd.DataFrame, var_pca:float,dim_pca):
 
     if dim_pca > 0:
         model_PCA=PCA(dim_pca)
     else:
         model_PCA=PCA()
 
-    features_PCA=model_PCA.fit_transform(features)
+    features_PCA=model_PCA.fit_transform(X_train)
     x_features=range(model_PCA.n_components_)
     variance_cumulee = np.cumsum(model_PCA.explained_variance_ratio_)
     # Trouver le nombre de dimensions pour expliquer au moins var_pca % de la variance
@@ -108,12 +108,11 @@ def PCA_dimension_reduction(features:pd.DataFrame,X_train:pd.DataFrame,X_test:pd
     print(model_PCA.n_components_)
 
     model_PCA=PCA(n_composantes)
-    features_train_pca=model_PCA.fit_transform(features)
-    features_test_pca=model_PCA.fit_transform(X_test)
-    X_train=model_PCA.transform(X_train)
-    X_test=model_PCA.transform(X_test)
+    features_train_pca=model_PCA.fit_transform(X_train)
+    features_test_pca=model_PCA.transform(X_test)
 
-    return X_train, X_test, features_train_pca,features_test_pca,n_composantes
+
+    return features_train_pca,features_test_pca,n_composantes
 
 #df = pd.read_csv(r"C:\Users\tallar\Documents\PROJETS\EDA_and_ML\Projects\Project_EDA\Repositories\Data\car_insurance.csv")
 #one_hot = encoding_categorical_features(df,"outcome")
