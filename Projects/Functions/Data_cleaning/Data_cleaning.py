@@ -6,13 +6,27 @@ import missingno as msno
 def dataset_reading(file_path, sep=";"):
     return pd.read_csv(file_path)
 
+def dataset_target_representation(df,cible):
+    classes = pd.DataFrame(df[cible].value_counts())
+    classes['class']=classes.index
+    classes['class']=classes['class'].astype("category")
+    x = classes["class"]
+    y = classes["count"]
+    plt.bar(x, y)
+    for i in range(len(x)):
+        plt.text(x=x[i],               # Position X
+                 y=y[i] + 0.5,             # Position Y (juste au-dessus de la barre)
+                 s=f"{x[i]}: {y[i]}", # Texte à afficher
+                 ha='center',                   # Alignement horizontal
+                 va='bottom')                   # Alignement vertical
+    plt.show()
 
 def dataset_drop_unused_columns(dataframe: pd.DataFrame, del_cols:list):
     for col in del_cols:
         if col in dataframe.columns.tolist():
             dataframe=dataframe.drop(col,axis=1)
-    colonnes=dataframe.columns.tolist()
-    return dataframe, colonnes
+
+    return dataframe
 
 
 def Change_ojectColumns_to_categoryColumns(dataframe: pd.DataFrame):
@@ -24,12 +38,6 @@ def Change_ojectColumns_to_categoryColumns(dataframe: pd.DataFrame):
             obj.append(col)
             dataframe[col]=dataframe[col].astype("category")
             compteur+=1
-            print(f'les données du champ {col} de type {dataframe[col].dtype} ont été changées en type category')
-            print('\n')
-            print('Avec les valeurs ci-dessous:')
-            print('\n')
-            print(dataframe[col].unique())
-            print('\n')
 
     return dataframe, obj, compteur
 

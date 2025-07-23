@@ -12,7 +12,6 @@ import numpy as np
 def encoding_categorical_features(dataframe: pd.DataFrame,target:str):
     features=dataframe.drop(target, axis=1)
     liste_cat = dataset_categorical_values(dataframe)
-    print(liste_cat)
     df_cat=features[liste_cat]
     encoder = OneHotEncoder(sparse_output=False)
     encoded_data = encoder.fit_transform(df_cat)
@@ -52,7 +51,6 @@ def generate_data_contract_for_frontEnd(X_train_modele : pd.DataFrame, contract_
     with open(contract_path,"w") as f:
         json.dump(format_features, f, indent=4)
 
-    print(format_features)
 
 
 def scale_features(dataframe_train: pd.DataFrame, dataframe_test: pd.DataFrame):

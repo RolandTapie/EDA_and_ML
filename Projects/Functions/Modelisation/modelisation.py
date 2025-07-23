@@ -17,7 +17,6 @@ def training_machine_learning_models(model_type: str, modeles: dict, validation_
     mse=[]
     r2=[]
 
-    print("ok")
     evaluations=""
     pipeline_model={}
     dict_modeles={}
@@ -45,7 +44,7 @@ def training_machine_learning_models(model_type: str, modeles: dict, validation_
                 plt.show()
             else:
 
-                print("Ce modèle ne dispose pas d'un attribut `loss_curve_`.")
+                print(f"{str(modele)} - Ce modèle ne dispose pas d'un attribut `loss_curve_`.")
             dict_modeles[nom]=modele
 
             if model_type == "classification":
@@ -89,7 +88,6 @@ def training_machine_learning_models(model_type: str, modeles: dict, validation_
 
             tab_modele.append(liste)
     listes = [pipeline_model, predictions, recall,accuracy,f1score,precision,mse, r2, tab_modele, dict_modeles]
-    print(len(listes))
     return (pipeline_model, predictions, recall,accuracy,f1score,precision,mse, r2, tab_modele, dict_modeles)
 
 
@@ -99,7 +97,6 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
 
     if model_type=="classification":
         for val in predictions:
-            print(val[0])
             cm = confusion_matrix(y_test, val[1])
             # Afficher la matrice de confusion avec seaborn
             sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
@@ -140,7 +137,6 @@ def evaluation_of_trained_models(predictions , dict_modeles,pipeline_model, mode
             if roc_auc > scor:
                 scor=(round(roc_auc,3))
                 best=val[0]
-                print(best)
 
         best_modele = dict_modeles[best]
         pipeline_best_model=pipeline_model[best]

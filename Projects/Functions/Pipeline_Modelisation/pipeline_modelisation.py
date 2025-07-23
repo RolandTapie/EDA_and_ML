@@ -54,7 +54,7 @@ def saving_of_best_model_for_production(model_path,model_path_api, pipeline,best
 
     joblib.dump(pipeline, model_path + model_file)
     joblib.dump(pipeline, model_path_api + model_file)
-    print(model_path + model_file)
-    print(model_path_api + model_file)
+    print("  "+model_path + model_file)
+    print("  "+model_path_api + model_file)
 
     #update_config(config_path,config_api,model_file,path_model)

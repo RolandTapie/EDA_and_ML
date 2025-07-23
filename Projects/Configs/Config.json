@@ -1,9 +1,9 @@
 {
     "project_name": "Nom du projet",
     "project_folder": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/",
-    "data_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Data/Houses.csv",
-    "target": "SalePrice",
-    "model_type": "regression",
+    "data_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Data/cancer.csv",
+    "target": "diagnosis",
+    "model_type": "classification",
     "boosting": true,
     "reports_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/Reports/",
     "model_path": "C:/Users/tallar/Documents/PROJETS/EDA_and_ML/Projects/Project_ML/Repositories/Models/",
