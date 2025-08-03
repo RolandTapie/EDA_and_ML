@@ -104,4 +104,5 @@ def execute_pipeline(configuration_path):
     print("🎉🎉🎉 Modelisation terminated. 🎉🎉🎉")
 
 
+
 execute_pipeline(r"C:\Users\tallar\Documents\PROJETS\EDA_and_ML\Projects\Configs\Config.json")
